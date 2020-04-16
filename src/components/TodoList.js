@@ -13,11 +13,25 @@ export default function TodoList() {
         let remTodos=todos.filter(t => t.id !== id)
         setTodos(remTodos)
     }
-    
+    const update =(id,updatedTask)=>{
+        let updatedTodos = todos.map(todo=>{
+            if(todo.id === id){
+                return {...todo,task:updatedTask}
+            }
+            return todo;
+        })
+        setTodos(updatedTodos)
+    }
     
     
     const allTodos = todos.map(todo => {
-        return <Todo id={todo.id} key={todo.id} task={todo.task} removeTodo={remove}/>
+        return <Todo 
+            id={todo.id} 
+            key={todo.id} 
+            todo={todo.task} 
+            removeTodo={remove}
+            updateTodo={update}
+            />
     })
     return (
         <div>
