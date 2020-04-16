@@ -1,12 +1,13 @@
 import React,{useState} from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import './styles/NewTodoForm.css'
 
 export default function NewTodoForm({createTodo}) {
     const [task,setTask] = useState({task:""})
     
     const handleSubmit = (e)=>{
         e.preventDefault();
-        createTodo({...task,id:uuidv4()});
+        createTodo({...task,id:uuidv4(),completed:false});
         setTask({task:""})
     }
     const handleChange =(e)=>{
@@ -15,12 +16,11 @@ export default function NewTodoForm({createTodo}) {
         })
     }
     return (
-        <div>
+        <div className="new-todo-form" >
             <form onSubmit={handleSubmit}>
-                <label htmlFor="task" >New Task</label>
                 <input 
                     type="text" 
-                    placeholder="New Task" 
+                    placeholder="New Todo " 
                     id="task" 
                     value={task.task} 
                     onChange={handleChange}

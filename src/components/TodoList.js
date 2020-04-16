@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Todo from './Todo'
 import NewTodoForm from './NewTodoForm'
+import './styles/TodoList.css'
 
 export default function TodoList() {
     const [todos, setTodos] = useState([])
@@ -22,8 +23,17 @@ export default function TodoList() {
         })
         setTodos(updatedTodos)
     }
+    const toggleCompletion =(id)=>{
+        let updatedTodos = todos.map(todo => {
+            if (todo.id === id) {
+                return { ...todo,completed:!todo.completed }
+            }
+            return todo;
+        })
+        setTodos(updatedTodos)
+    }
     
-    
+
     const allTodos = todos.map(todo => {
         return <Todo 
             id={todo.id} 
@@ -31,15 +41,15 @@ export default function TodoList() {
             todo={todo.task} 
             removeTodo={remove}
             updateTodo={update}
+            completed={todo.completed}
+            toggleTodo={toggleCompletion}
             />
     })
     return (
-        <div>
-            <h1>TodoList</h1>
+        <div className="todolist">
+            <h1>Todo List<span>A simple React app.</span></h1>
             <NewTodoForm createTodo={create} />
-            <ul>
-                {allTodos}
-            </ul>
+            <ul>{allTodos}</ul>
         </div>
     )
 }

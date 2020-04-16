@@ -1,0 +1,27 @@
+.new-todo-form {
+
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+.new-todo-form input{
+flex-grow: 1;
+border:none;
+background: #f7f1f1;
+padding: 0.9em 1.5em;
+font-size: initial;
+}
+.new-todo-form button {
+    padding: 0.95rem 1.3rem;
+    border: none;
+    background: #7BC29B;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease-out;
+}
+.new-todo-form button:hover {
+    background: #216C43;
+}
